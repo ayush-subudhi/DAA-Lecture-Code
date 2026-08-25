@@ -1,0 +1,22 @@
+# 0/1
+def knapsack01(price, wt, w):
+    n = len(price)
+    ratio = []
+    for i in range(n):
+        ratio.append((price[i] / wt[i], price[i], wt[i], i))
+    ratio.sort(key=lambda x: x[0], reverse=True)
+    profit = 0
+    item = []
+    for rat, p, wt, id in ratio:
+        if (wt <= w):
+            w -= wt
+            profit += p
+            item.append(id)
+    return profit, item
+
+
+price = [60, 100, 120]
+wt = [10, 20, 30]
+w = 50
+
+print(knapsack01(price, wt, w))
