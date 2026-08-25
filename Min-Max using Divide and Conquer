@@ -1,0 +1,19 @@
+def minmax(arr):
+    if len(arr) == 1:
+        return (arr[0], arr[0])
+    mid = len(arr) // 2
+    min1, max1 = minmax(arr[:mid])
+    min2, max2 = minmax(arr[mid:])
+    if min1 < min2:
+        min_f = min1
+    else:
+        min_f = min2
+
+    if max1 > max2:
+        max_f = max1
+    else:
+        max_f = max2
+
+    return min_f, max_f
+arr = [10, 5, 8, 2, 15, 3, 7]
+print(minmax(arr))
